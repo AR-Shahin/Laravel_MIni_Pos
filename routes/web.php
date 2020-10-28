@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-
 //Dashboard Routes
 Route::get('/','DashboardController@index');
 
@@ -15,8 +13,10 @@ Route::get('group.destroy/{id}','UserGroupsController@destroy');
 
 //User Routes
 Route::resource('users', 'UserController' );
+//Category Routes
 Route::resource('category', 'CategoryController',['except' => ['show','edit','create']] );
-Route::resource('product', 'CategoryController',['except' => ['show','edit','create']] );
+//Product Routes
+Route::resource('product', 'ProductController',['except' => ['show','edit','create']] );
 
 
 

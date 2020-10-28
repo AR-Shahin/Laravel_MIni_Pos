@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'User Groups')
+@section('title', 'Category')
 @section('css_files')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/vendor/datatables/css/dataTables.bootstrap4.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/vendor/datatables/css/buttons.bootstrap4.css">

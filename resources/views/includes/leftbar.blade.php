@@ -34,7 +34,7 @@
                                     <a class="nav-link" href="{{ route('category.index') }}">Category <span class="badge badge-secondary"></span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('users') }}">Product</a>
+                                    <a class="nav-link" href="{{ route('product.index') }}">Product</a>
                                 </li>
                             </ul>
                         </div>
