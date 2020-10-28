@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+//Login Routes
+Route::get('login','Auth\LoginController@index')->name('login');
+Route::post('login','Auth\LoginController@LoginProcess');
+
+//Auth MIDDLEWARE
+Route::group(['middleware' => 'auth'], function() {
+Route::get('logout','Auth\LoginController@Logout');
 //Dashboard Routes
 Route::get('/','DashboardController@index');
 
@@ -17,6 +25,7 @@ Route::resource('users', 'UserController' );
 Route::resource('category', 'CategoryController',['except' => ['show','edit','create']] );
 //Product Routes
 Route::resource('product', 'ProductController',['except' => ['show','edit','create']] );
+});
 
 
 
