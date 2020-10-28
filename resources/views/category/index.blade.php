@@ -15,8 +15,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Products</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Category</li>
                     </ol>
                 </nav>
             </div>
@@ -45,7 +45,20 @@
                         @php
                         $i=1;
                         @endphp
-                      
+                        @foreach($categories as $cat)
+                        <tr>
+                        <td>{{ $i++}}</td>
+                        <td>{{ $cat->title}}</td>
+                        <td class="text-center">
+                        <a  data-toggle="modal" data-target="#editModal_{{ $cat->id }}" class="btn btn-primary text-light btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                         <form method="POST" action=" {{ url('category/'.$cat->id)}} " style="display:inline-block">
+		              		@csrf
+		              		@method('DELETE')
+		              		<button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></button>	
+		              	</form>
+                        </td>
+                      </tr>
+                        @endforeach
                     </tbody>
                     </table>
                 </div>
@@ -74,35 +87,9 @@
     </div>
 </div>
 @endsection
-<!-- Modal -->
-<form action="" method="POST">
-    @csrf
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create New Group </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="title">User Group Title : </label>
-                <input type="title" name="title" class="form-control" id="title" placeholder="User Group Title">
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary btn-block">Add Group</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-
 {{-- Edit modal --}}
-
-<div id="editModal_" class="modal fade">
+ @foreach($categories as $cat)
+<div id="editModal_{{$cat->id}}" class="modal fade">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content bd-0 tx-14">
       <div class="modal-header pd-x-20">
@@ -112,22 +99,23 @@
         </button>
       </div>
       <div class="modal-body pd-20">
-        <form action="{{ url('group.edit').'/'}}" method="POST" method="POST">
+        <form action="{{ url('category').'/'.$cat->id}}" method="POST">
           @csrf
+          @method('PUT')
           <input type="hidden"  value="" name="old_img">
-          <label for="">Group Name : </label>
+          <label for="">Categroy Name : </label>
          <div class="input-group">
-           <input type="text" class="form-control" value="" name="title">
+           <input type="text" class="form-control" value="{{ $cat->title}}" name="title">
          </div>
          <div class="form-group mt-3">
-           <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-pencil-square mr-1"></i> Update Group</button>
+           <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-pencil-square mr-1"></i> Update Category</button>
          </div>
         </form>
       </div>
     </div>
   </div><!-- modal-dialog -->
 </div><!-- modal -->
-
+@endforeach
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('assets') }}/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>

@@ -15,7 +15,8 @@ Route::get('group.destroy/{id}','UserGroupsController@destroy');
 
 //User Routes
 Route::resource('users', 'UserController' );
-Route::resource('category', 'CategoryController' );
+Route::resource('category', 'CategoryController',['except' => ['show','edit','create']] );
+Route::resource('product', 'CategoryController',['except' => ['show','edit','create']] );
 
 
 
