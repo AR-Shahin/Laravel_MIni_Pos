@@ -30,6 +30,8 @@ Route::get('users/{id}/purchase','UserPurchaseController@index')->name('user.pur
 
 //User Payment Routes
 Route::get('users/{id}/payment','UserPaymentController@index')->name('user.payment');
+Route::post('users/{id}/payment','UserPaymentController@store')->name('user.payment.store');
+Route::delete('users/{id}/payments/{payment_id}', 	'UserPaymentController@destroy')->name('user.payments.destroy');
 
 //User Receipt Routes
 Route::get('users/{id}/receipt','UserReceiptController@index')->name('user.receipt');

@@ -37,6 +37,7 @@
                                 <th>Amount</th>
                                 <th>Date</th>
                                 <th>Note</th>
+                                <th>Total</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -52,7 +53,7 @@
                         <td>{{ $payment->note}}</td>
                         <td>100</td>
                         <td class="text-center">
-                            <form method="POST" action=" {{ url('product/'.$payment->id)}} " style="display:inline-block">
+                            <form method="POST" action="{{ route('user.payments.destroy', ['id' => $user->id, 'payment_id' => $payment->id]) }}" style="display:inline-block">
                             @csrf
                             @method('DELETE')
                             <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></button>
