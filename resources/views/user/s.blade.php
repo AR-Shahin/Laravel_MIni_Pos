@@ -1,5 +1,5 @@
 @extends('user.user_layouts')
-@section('title', 'Single User Info')
+@section('title', 'Single User')
 
 @section('breadcrumb')
 <div class="row">
@@ -10,7 +10,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Users</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Single User Info</li>
+                        <li class="breadcrumb-item active" aria-current="page">Single User</li>
                     </ol>
                 </nav>
             </div>
@@ -18,35 +18,40 @@
     </div>
 </div>
 @endsection
-@section('user_content')
+@section('user_card')
 <div class="card">
     <div class="card-body">
-    <h3><b>{{$user->name}}'s</b> Information</h3>
-    <hr>
-            <table class="table table-striped table-bordered">
+        <div class="row justify-content-center">
+
+            <div class="col-8">
+                <h3>{{ $users->name}}'s Data.</h3>
+                <hr>
+              <table class="table table-striped">
                 <tbody>
                   <tr>
-                    <th>Group  </th>
-                    <td>{{ ucwords($user->group->title)}}</td>
+                    <th>Group : </th>
+                    <td>{{ ucwords($users->group->title)}}</td>
                     </tr>
                     <tr>
-                    <th>Name  </th>
-                    <td>{{ $user->name}}</td>
+                    <th>Name : </th>
+                    <td>{{ $users->name}}</td>
                     </tr>
                      <tr>
-                    <th>Email  </th>
-                    <td>{{ $user->email}}</td>
+                    <th>Email : </th>
+                    <td>{{ $users->email}}</td>
                     </tr>
                      <tr>
-                    <th>Phone  </th>
-                    <td>{{ $user->phone}}</td>
+                    <th>Phone : </th>
+                    <td>{{ $users->phone}}</td>
                     </tr>
                      <tr>
-                    <th>Address  </th>
-                    <td>{{ $user->address}}</td>
+                    <th>Address : </th>
+                    <td>{{ $users->address}}</td>
                     </tr>
                 </tbody>
                 </table>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

@@ -68,7 +68,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-         $this->data['users'] = User::findorFail($id);
+         $this->data['user'] = User::findorFail($id);
+         $this->data['tab_menu'] = 'user_info';
         return view('user.show',$this->data);
     }
 

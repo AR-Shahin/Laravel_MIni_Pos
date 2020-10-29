@@ -53,8 +53,8 @@
                         @foreach($users as $user)
                              <tr>
                                 <td>{{ $i++}}</td>
-                                <td>{{$user->group_id}}</td>
-                                <td>{{$user->admin_id}}</td>
+                                <td>{{ optional($user->group)->title }}</td>
+                                <td>{{$user->admin->name}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
