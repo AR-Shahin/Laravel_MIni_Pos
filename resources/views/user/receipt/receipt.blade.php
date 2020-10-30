@@ -34,7 +34,7 @@
                                 <th>Customer Name</th>
                                 <th>Admin Name</th>
                                 <th>Date</th>
-                                <th>Total</th>
+                                <th>Amount</th>
                                 <th>Note</th>
                                 <th>Actions</th>
                             </tr>
@@ -45,17 +45,24 @@
                         <td>{{ $user->name}}</td>
                         <td>{{ $user->admin->name}}</td>
                         <td>{{ $receipt->date}}</td>
-                        <td>100</td>
+                        <td>{{ $receipt->amount}}</td>
                         <td>{{ $receipt->note}}</td>
                         <td class="text-center">
-                            <form method="POST" action=" {{ url('product/'.$receipt->id)}} " style="display:inline-block">
+                            <form method="POST" action="{{ route('user.receipts.destroy', ['id' => $user->id, 'receipt_id' => $receipt->id]) }}" style="display:inline-block">
                             @csrf
                             @method('DELETE')
-                            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></button>
+                            <button type="submit" onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></button>
                         </td>
                         </tr>
                     @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">Total</th>
+                            <th colspan="3" >{{ $user->receipts->sum('amount') }}</th>
+                        </tr>
+                    </tfoot>
                     </table>
                 </div>
             </div>

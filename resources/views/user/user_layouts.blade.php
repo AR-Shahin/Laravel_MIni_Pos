@@ -58,12 +58,65 @@
 
 <!-- New Payments Modal  -->
 <div class="modal fade" id="newPayment" tabindex="-1" role="dialog" aria-labelledby="newPayment" aria-hidden="true">
-    <form action="{{ route('user.payment.store',$user->id) }}" method="POST">
-      @csrf
+    <form action="{{ route('user.payment.store',$user->id)  }}" method="POST">
+        @csrf
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="exampleModalLabel">New Payments </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                      <div class="row">
+                          <div class="col-3">
+                              <label for="date">Date <span class="text-danger">*</span></label>
+                          </div>
+                          <div class="col-9">
+                              <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id = "date" value="{{ old('date')}}">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="amount">Amount <span class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" id = "amount" value="{{ old('amount')}}" placeholder="Amount">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                      <div class="col-3">
+                          <label for="amount">Note <span class="text-danger">*</span></label>
+                      </div>
+                      <div class="col-9">
+                          <textarea name="note" id="" cols="30" rows="3" class="form-control @error('note') is-invalid @enderror"></textarea>
+                      </div>
+                  </div>
+              </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- New Receipt Modal  -->
+<div class="modal fade" id="newReceipt" tabindex="-1" role="dialog" aria-labelledby="newReceipt" aria-hidden="true">
+    <form action="{{ route('user.receipt.store',$user->id)  }}" method="POST">
+        @csrf
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">New Receipt </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

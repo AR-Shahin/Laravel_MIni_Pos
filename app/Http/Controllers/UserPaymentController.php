@@ -19,6 +19,7 @@ class UserPaymentController extends Controller
 
      public function store(PaymentRequest $request, $usr_id)
     {
+     
         $payment = new Payment();
         $payment->admin_id = Auth::id();
         $payment->user_id = $usr_id;

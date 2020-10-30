@@ -35,8 +35,8 @@ Route::delete('users/{id}/payments/{payment_id}', 	'UserPaymentController@destro
 
 //User Receipt Routes
 Route::get('users/{id}/receipt','UserReceiptController@index')->name('user.receipt');
-
-
+Route::post('users/{id}/receipt','UserReceiptController@store')->name('user.receipt.store');
+Route::delete('users/{id}/receipts/{receipt_id}', 	'UserReceiptController@destroy')->name('user.receipts.destroy');
 
 
 

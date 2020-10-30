@@ -48,10 +48,10 @@
                       
                         <td>{{ $user->name}}</td>
                         <td>{{ $user->admin->name}}</td>
-                        <td>{{ $payment->amount}}</td>
+                        <td class="text-center">{{ $payment->amount}}</td>
                         <td>{{ $payment->date}}</td>
                         <td>{{ $payment->note}}</td>
-                        <td>100</td>
+                        <td>{{ $payment->amount}}</td>
                         <td class="text-center">
                             <form method="POST" action="{{ route('user.payments.destroy', ['id' => $user->id, 'payment_id' => $payment->id]) }}" style="display:inline-block">
                             @csrf
@@ -60,6 +60,15 @@
                         </td>
                         </tr>
                     @endforeach
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th colspan="2">Total</th>
+                            <th colspan="2" >{{ $user->payments->sum('amount') }}</th>
+                        </tr>
+                    </tfoot>
                     </tbody>
                     </table>
                 </div>
