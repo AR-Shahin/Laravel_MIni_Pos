@@ -54,7 +54,7 @@ $i=1;
 <tr>
 <td>{{ $i++}}</td>
 <td>{{ $product->title}}</td>
-<td>{{ $product->category->title}}</td>
+<td>{{ $product->category->title }}</td>
 <td>${{ $product->cost_price}}</td>
 <td>${{ $product->price}}</td>
 <td>{{ $product->unit}}</td>
