@@ -24,6 +24,13 @@ Route::resource('users', 'UserController' );
 
 //User sales Routes
 Route::get('users/{id}/sales','UserSalesController@index')->name('user.sales');
+Route::post('users/{id}/invoices','UserSalesController@createInvoice')->name('user.sales.store');
+Route::delete('users/{id}/invoices/{invoice_id}','UserSalesController@destroy')->name('user.sales.destroy');
+
+//--invoice||sale
+Route::get('users/{id}/invoices/{invoice_id}', 'UserSalesController@invoice')->name('user.sales.invoice_details');
+Route::post('users/{id}/invoices/{invoice_id}','UserSalesController@addItem')->name('user.sales.invoices.add_item');
+Route::delete('users/{id}/invoices/{invoice_id}/{item_id}', 'UserSalesController@destroyItem')->name('user.sales.invoices.delete_item');
 
 //User Purchases Routes
 Route::get('users/{id}/purchase','UserPurchaseController@index')->name('user.purchase');
