@@ -17,7 +17,7 @@ class UserReceiptController extends Controller
     }
 
     
-    public function store(ReceiptRequest $request, $usr_id)
+    public function store(ReceiptRequest $request, $usr_id,$receipt_id = null)
     {
         $receipt = new Receipt();
         $receipt->admin_id = Auth::id();
@@ -25,10 +25,17 @@ class UserReceiptController extends Controller
         $receipt->amount = $request->amount;
         $receipt->date = $request->date;
         $receipt->note = $request->note;
+        if($receipt_id){
+            $receipt->sale_invoice_id = $receipt_id;
+        }
         if($receipt->save()){
             $this->setSuccessMessage('Receipt Added Successfully!');
+            if($receipt_id){
+                return redirect()->back();
+            }else{
+                return redirect()->route('user.receipt', ['id' => $usr_id]);
+            }
            // return redirect()->back();
-            return redirect()->route('user.receipt', ['id' => $usr_id]);
         }
     }
     public function destroy($usr_id,$rc_id){

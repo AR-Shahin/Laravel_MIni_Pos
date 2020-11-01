@@ -17,18 +17,18 @@ class UserSalesController extends Controller
     {
         $this->data['user'] 	= User::findOrFail($id);
         $this->data['tab_menu'] = 'sales';
-    	return view('user.sales.sales', $this->data);
+        return view('user.sales.sales', $this->data);
     }
 
     public function createInvoice(InvoiceRequest $request, $usr_id)
     {
         $formData 				= $request->all();
-    	$formData['user_id'] 	= $usr_id;
+        $formData['user_id'] 	= $usr_id;
         $formData['admin_id'] 	= Auth::id();
-        $invoice = SaleInvoice::create($formData); 
+        $invoice = SaleInvoice::create($formData);
         if($invoice){
             //$this->setSuccessMessage('Invoice Added Successfully!');
-           // return redirect()->back();
+            // return redirect()->back();
             return redirect()->route('user.sales.invoice_details', ['id' => $usr_id,'invoice_id' => $invoice->id]);
         }
     }
@@ -38,21 +38,21 @@ class UserSalesController extends Controller
         $this->data['user']         = User::findOrFail($user_id);
         $this->data['invoice']      = SaleInvoice::findOrFail($invoice_id);
         $this->data['products']     = Product::latest()->get();
-      // return $this->data['invoice']->items; 
+        // return $this->data['invoice']->items;
         return view('user.sales.invoice', $this->data);
     }
 
 
     public function addItem(InvoiceProductRequest $request, $user_id, $invoice_id)
     {
-    
+
         $formData = $request->all();
         $formData['sale_invoice_id'] = $invoice_id;
 
         if( SaleItem::create($formData) ) {
             $this->setSuccessMessage('Product Added Successfully!');
         }
-        
+
         return redirect()->route( 'user.sales.invoice_details', ['id' => $user_id, 'invoice_id' => $invoice_id] );
     }
     public function destroy($user_id, $invoice_id)
@@ -67,7 +67,7 @@ class UserSalesController extends Controller
         if( SaleItem::destroy( $item_id ) ) {
             $this->setSuccessMessage('Item Deleted Successfully!');
         }
-return redirect()->back();
-       // return redirect()->route( 'user.sales.invoice_details', ['id' => $user_id, 'invoice_id' => $invoice_id] );
+        return redirect()->back();
+        // return redirect()->route( 'user.sales.invoice_details', ['id' => $user_id, 'invoice_id' => $invoice_id] );
     }
 }

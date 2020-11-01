@@ -35,6 +35,7 @@
                                 <th>Customer Name</th>
                                 <th>Admin Name</th>
                                 <th>Date</th>
+                                <th>Note</th>
                                 <th>Items</th>
                                 <th>Total</th>
                                 <th>Actions</th>
@@ -51,6 +52,7 @@
                         <td>{{ $user->name}}</td>
                         <td>{{ $user->admin->name}}</td>
                         <td>{{ $sale->date}}</td>
+                        <td>{{ $sale->note}}</td>
                         <td class="text-center">
                         {{ $sale->items->sum('quantity')}}
                         @php

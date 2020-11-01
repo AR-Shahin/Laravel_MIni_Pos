@@ -1,4 +1,4 @@
-@extends('user.user_layouts')
+@extends('user.invoice_layout')
 @section('title', 'Single User Invoice')
 
 @section('breadcrumb')
@@ -63,7 +63,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
+                <tr>
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addProduct">
@@ -72,8 +72,27 @@
                     </td>
                     <td></td>
                     <th colspan="1">Total : </th>
-                    <td colspan="2">${{ $invoice->items->sum('total') }}</td>
-                </tfoot>
+                    <td colspan="2">${{ $payble = $invoice->items->sum('total') }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newReceipt">
+                            <i class="fa fa-plus"></i> Add Receipt
+                        </button>
+                    </td>
+                    <td></td>
+                    <th colspan="1">Paid : </th>
+                    <td colspan="2">${{ $paid = $invoice->receipts->sum('amount') }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td></td>
+                    <th colspan="1">Due : </th>
+                    <td colspan="2">${{ $payble - $paid }}</td>
+                </tr>
             </table> 	 	 	 	 	
         </div>
     </div>
@@ -139,6 +158,60 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- New Receipt Modal  -->
+<div class="modal fade" id="newReceipt" tabindex="-1" role="dialog" aria-labelledby="newReceipt" aria-hidden="true">
+    <form action="{{ route('user.receipt.store',[$user->id,$invoice->id])  }}" method="POST">
+        @csrf
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">New Receipt For This Invoice</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="date">Date <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-9">
+                                <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id = "date" value="{{ old('date')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="amount">Amount <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" id = "amount" value="{{ old('amount')}}" placeholder="Amount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="amount">Note <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-9">
+                                <textarea name="note" id="" cols="30" rows="3" class="form-control @error('note') is-invalid @enderror"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

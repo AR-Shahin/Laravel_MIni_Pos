@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //Login Routes
 Route::get('login','Auth\LoginController@index')->name('login');
-Route::post('login','Auth\LoginController@LoginProcess');
+            Route::post('login','Auth\LoginController@LoginProcess');
 
 //Auth MIDDLEWARE
 Route::group(['middleware' => 'auth'], function() {
@@ -42,7 +42,7 @@ Route::delete('users/{id}/payments/{payment_id}', 	'UserPaymentController@destro
 
 //User Receipt Routes
 Route::get('users/{id}/receipt','UserReceiptController@index')->name('user.receipt');
-Route::post('users/{id}/receipt','UserReceiptController@store')->name('user.receipt.store');
+Route::post('users/{id}/receipt/{invoice_id?}','UserReceiptController@store')->name('user.receipt.store');
 Route::delete('users/{id}/receipts/{receipt_id}', 	'UserReceiptController@destroy')->name('user.receipts.destroy');
 
 
