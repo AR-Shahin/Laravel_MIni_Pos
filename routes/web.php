@@ -34,10 +34,16 @@ Route::delete('users/{id}/invoices/{invoice_id}/{item_id}', 'UserSalesController
 
 //User Purchases Routes
 Route::get('users/{id}/purchase','UserPurchaseController@index')->name('user.purchase');
+Route::post('users/{id}/purchase','UserPurchaseController@createInvoice')->name('user.purchase.store');
+Route::delete('users/{id}/purchase/{invoice_id}','UserPurchaseController@destroy')->name('user.purchase.destroy');
+
+    Route::get('users/{id}/purchase/{invoice_id}', 'UserPurchaseController@invoice')->name('user.purchase.invoice_details');
+    Route::post('users/{id}/purchase/{invoice_id}','UserPurchaseController@addItem')->name('user.purchase.invoices.add_item');
+    Route::delete('users/{id}/purchase/{invoice_id}/{item_id}', 'UserPurchaseController@destroyItem')->name('user.purchase.invoices.delete_item');
 
 //User Payment Routes
 Route::get('users/{id}/payment','UserPaymentController@index')->name('user.payment');
-Route::post('users/{id}/payment','UserPaymentController@store')->name('user.payment.store');
+Route::post('users/{id}/payment/{invoice_id?}','UserPaymentController@store')->name('user.payment.store');
 Route::delete('users/{id}/payments/{payment_id}', 	'UserPaymentController@destroy')->name('user.payments.destroy');
 
 //User Receipt Routes

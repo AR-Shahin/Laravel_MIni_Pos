@@ -27,11 +27,11 @@
                     <div class="metric-value d-inline-block">
                         <h1 class="mb-1">$
                             <?php
-                            $total = 0;
+                            $Sale = 0;
                             foreach ($user->sales as $sale){
-                                $total+= $sale->items->sum('total');
+                                $Sale+= $sale->items->sum('total');
                             }
-                            echo $total;
+                            echo $Sale;
                             ?>
                         </h1>
                     </div>
@@ -45,33 +45,24 @@
                     <div class="metric-value d-inline-block">
                         <h1 class="mb-1">$
                             <?php
-                            $total = 0;
+                            $Purchases = 0;
                             foreach ($user->purchases as $purchase){
-                                $total+= $purchase->items->sum('total');
+                                $Purchases+= $purchase->items->sum('total');
                             }
-                            echo $total;
+                            echo $Purchases;
                             ?>
                         </h1>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
-            <div class="card border-3 border-top border-top-primary">
-                <div class="card-body">
-                    <h5 class="text-muted">Sales</h5>
-                    <div class="metric-value d-inline-block">
-                        <h1 class="mb-1">$12099</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
             <div class="card border-3 border-top border-top-primary">
                 <div class="card-body">
                     <h5 class="text-muted">Payments</h5>
                     <div class="metric-value d-inline-block">
-                        <h1 class="mb-1">${{ $user->payments()->sum('amount') }}</h1>
+                        <h1 class="mb-1">${{$Payment = $user->payments()->sum('amount') }}</h1>
                     </div>
                 </div>
             </div>
@@ -81,18 +72,42 @@
                 <div class="card-body">
                     <h5 class="text-muted">Receipts</h5>
                     <div class="metric-value d-inline-block">
-                        <h1 class="mb-1">${{ $user->receipts->sum('amount') }}</h1>
+                        <h1 class="mb-1">${{$Receipt = $user->receipts->sum('amount') }}</h1>
                     </div>
                 </div>
             </div>
         </div>
-
+        @php
+            $totalBalance = ($Purchases + $Receipt) - ($Sale + $Payment)
+        @endphp
         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
             <div class="card border-3 border-top border-top-primary">
                 <div class="card-body">
-                    <h5 class="text-muted">Sales</h5>
+                    <h5 class="text-muted">Balance</h5>
                     <div class="metric-value d-inline-block">
-                        <h1 class="mb-1">$12099</h1>
+                        <h1 class="mb-1">$
+                            @if($totalBalance>=0)
+                                {{ $totalBalance}}
+                            @else
+                                0
+                            @endif
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Due</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">$
+                            @if ($totalBalance < 0)
+                                {{ $totalBalance }}
+                            @else
+                                0
+                            @endif
+                        </h1>
                     </div>
                 </div>
             </div>

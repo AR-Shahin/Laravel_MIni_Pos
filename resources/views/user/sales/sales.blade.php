@@ -85,6 +85,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                                 <th>Total</th>
                                 <th class="text-center">{{ $grandQuantity}}</th>
                                 <th class="text-center">${{$grandTotal}}</th>

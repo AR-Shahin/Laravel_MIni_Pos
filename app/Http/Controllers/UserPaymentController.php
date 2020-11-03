@@ -17,19 +17,31 @@ class UserPaymentController extends Controller
     }
 
 
-     public function store(PaymentRequest $request, $usr_id)
+     public function store(PaymentRequest $request, $usr_id,$payment_id = null)
     {
-     
+     if($payment_id){
+
+     }else{
+
+     }
         $payment = new Payment();
         $payment->admin_id = Auth::id();
         $payment->user_id = $usr_id;
         $payment->amount = $request->amount;
         $payment->date = $request->date;
         $payment->note = $request->note;
+        if($payment_id){
+            $payment->purchase_invoice_id = $payment_id;
+        }
         if($payment->save()){
-            $this->setSuccessMessage('Payment Added Successfully!');
-           // return redirect()->back();
-            return redirect()->route('user.payment', ['id' => $usr_id]);
+            if($payment_id){
+                $this->setSuccessMessage('Payment Added Successfully!');
+                return redirect()->back();
+            }else{
+                $this->setSuccessMessage('Payment Added Successfully!');
+                // return redirect()->back();
+                return redirect()->route('user.payment', ['id' => $usr_id]);
+            }
         }
     }
     public function destroy($usr_id,$py_id){
