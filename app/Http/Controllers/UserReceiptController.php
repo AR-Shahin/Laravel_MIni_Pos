@@ -9,10 +9,16 @@ use App\Receipt;
 use Illuminate\Support\Facades\Auth;
 class UserReceiptController extends Controller
 {
+    public function  __construct()
+    {
+        parent::__construct();
+        // $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
+        $this->data['tab_menu'] = 'receipt';
+    }
     public function index( $id )
     {
         $this->data['user'] 	= User::findOrFail($id);
-        $this->data['tab_menu'] = 'receipt';
     	return view('user.receipt.receipt', $this->data);
     }
 

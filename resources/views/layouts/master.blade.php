@@ -22,7 +22,6 @@
 	        </ul>
 	    </div>
 	@endif
-           @yield('breadcrumb')
            @yield('main_content')
           
     </div>   

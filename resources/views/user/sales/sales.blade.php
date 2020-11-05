@@ -1,35 +1,18 @@
 @extends('user.user_layouts')
 @section('title', 'Single User Info')
 
-@section('breadcrumb')
-<div class="row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-        <div class="page-header">
-            <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Users</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Single User Sales Info</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
 @section('user_content')
-<div class="card">
-    <div class="card-body">
-        <div class="row justify-content-center">
+    <div class="card">
+        <div class="card-body">
+            <div class="row justify-content-center">
 
-            <div class="col-12">
-                <h3>Sales of <b>{{ $user->name}}</b></h3>
-                <hr>
-              
-              <div class="table-responsive">
-                    <table id="example3" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
+                <div class="col-12">
+                    <h3>Sales of <b>{{ $user->name}}</b></h3>
+                    <hr>
+
+                    <div class="table-responsive">
+                        <table id="example3" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
                             <tr>
                                 <th>Challan No</th>
                                 <th>Customer Name</th>
@@ -40,47 +23,47 @@
                                 <th>Total</th>
                                 <th>Actions</th>
                             </tr>
-                        </thead>
-                    <tbody>
-                    @php
-                        $grandTotal = 0;
-                        $grandQuantity = 0;
-                    @endphp
-                    @foreach($user->sales as $sale)
-                           <tr>
-                        <td>{{ $sale->challan_no}}</td>
-                        <td>{{ $user->name}}</td>
-                        <td>{{ $user->admin->name}}</td>
-                        <td>{{ $sale->date}}</td>
-                        <td>{{ $sale->note}}</td>
-                        <td class="text-center">
-                        {{ $sale->items->sum('quantity')}}
-                        @php
-                            $grandQuantity+=$sale->items->sum('quantity');
-                        @endphp
-                        </td>
-                        <td class="text-center">
-                       $ {{ $sale->items->sum('total')}}
-                       @php
-                          $grandTotal+=$sale->items->sum('total'); 
-                       @endphp 
-                        </td>
-                        <td class="text-center">{{-- invoice and sale id same --}}
-                          <a class="btn btn-primary btn-sm" href="{{ route('user.sales.invoice_details', ['id' => $user->id, 'invoice_id' => $sale->id]) }}"> 
-                                <i class="fa fa-eye"></i> 
-                           </a>
-                           @if($grandQuantity == 0)
-                             <form method="POST" action=" {{ route('user.sales.destroy', ['id' => $user->id, 'invoice_id' => $sale->id ]) }} " style="display:inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></button>
-                            </form>
-                           @endif
-                        </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                    <tfoot>
+                            </thead>
+                            <tbody>
+                            @php
+                                $grandTotal = 0;
+                                $grandQuantity = 0;
+                            @endphp
+                            @foreach($user->sales as $sale)
+                                <tr>
+                                    <td>{{ $sale->challan_no}}</td>
+                                    <td>{{ $user->name}}</td>
+                                    <td>{{ $user->admin->name}}</td>
+                                    <td>{{ $sale->date}}</td>
+                                    <td>{{ $sale->note}}</td>
+                                    <td class="text-center">
+                                        {{ $sale->items->sum('quantity')}}
+                                        @php
+                                            $grandQuantity+=$sale->items->sum('quantity');
+                                        @endphp
+                                    </td>
+                                    <td class="text-center">
+                                        $ {{ $sale->items->sum('total')}}
+                                        @php
+                                            $grandTotal+=$sale->items->sum('total');
+                                        @endphp
+                                    </td>
+                                    <td class="text-center">{{-- invoice and sale id same --}}
+                                        <a class="btn btn-primary btn-sm" href="{{ route('user.sales.invoice_details', ['id' => $user->id, 'invoice_id' => $sale->id]) }}">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        @if($grandQuantity == 0)
+                                            <form method="POST" action=" {{ route('user.sales.destroy', ['id' => $user->id, 'invoice_id' => $sale->id ]) }} " style="display:inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            <tfoot>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -91,11 +74,11 @@
                                 <th class="text-center">${{$grandTotal}}</th>
                                 <th></th>
                             </tr>
-                        </tfoot>
-                    </table>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

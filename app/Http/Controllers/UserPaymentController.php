@@ -9,21 +9,27 @@ use App\Payment;
 use Illuminate\Support\Facades\Auth;
 class UserPaymentController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
+    }
     public function index( $id )
     {
         $this->data['user'] 	= User::orderBy('id','desc')->findOrFail($id);
         $this->data['tab_menu'] = 'payment';
-    	return view('user.payment.payment', $this->data);
+        return view('user.payment.payment', $this->data);
     }
 
 
-     public function store(PaymentRequest $request, $usr_id,$payment_id = null)
+    public function store(PaymentRequest $request, $usr_id,$payment_id = null)
     {
-     if($payment_id){
+        if($payment_id){
 
-     }else{
+        }else{
 
-     }
+        }
         $payment = new Payment();
         $payment->admin_id = Auth::id();
         $payment->user_id = $usr_id;

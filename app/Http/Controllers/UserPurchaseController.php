@@ -16,13 +16,14 @@ class UserPurchaseController extends Controller
 {
     public function  __construct()
     {
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
         $this->data['tab_menu'] = 'purchases';
     }
-
     public function index( $id )
     {
         $this->data['user'] 	= User::findOrFail($id);
-        $this->data['tab_menu'] = 'purchase';
+        //$this->data['tab_menu'] = 'purchase';
         return view('user.purchase.purchase', $this->data);
     }
 

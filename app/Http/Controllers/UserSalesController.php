@@ -13,6 +13,13 @@ use App\SaleItem;
 
 class UserSalesController extends Controller
 {
+    public function  __construct()
+    {
+        parent::__construct();
+       // $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
+       // $this->data['tab_menu'] = 'purchases';
+    }
     public function index( $id )
     {
         $this->data['user'] 	= User::findOrFail($id);

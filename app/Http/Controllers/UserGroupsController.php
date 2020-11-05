@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UserGroupsController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Groups';
+    }
     public function groups(){
         $this->data['groups'] = Group::latest()->get();
         return view('group.index',$this->data);

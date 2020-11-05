@@ -8,11 +8,12 @@ use App\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
+    }
     public function index()
     {
         $this->data['groups'] = Group::latest()->get();

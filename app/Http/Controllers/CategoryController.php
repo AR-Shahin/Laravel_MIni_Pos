@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Category;
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Products';
+        $this->data['sub_menu'] = 'Category';
+    }
     /**
      * Display a listing of the resource.
      *

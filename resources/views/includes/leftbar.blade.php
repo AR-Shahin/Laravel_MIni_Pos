@@ -10,31 +10,31 @@
                     <li class="nav-divider">
                         Menu
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <li class="nav-item">
+                        <a class="nav-link @if($main_menu == 'Dashboard') active @endif" href="{{route('dashboard')}}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#users" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Users</a>
-                        <div id="users" class="collapse submenu" style="">
+                        <a class="nav-link @if($main_menu == 'Users') active @endif" href="#" data-toggle="collapse" aria-expanded="false" data-target="#users" aria-controls="users"><i class="fa fa-fw fa-users"></i>Users</a>
+                        <div id="users" class="collapse submenu @if($main_menu == 'Users') show @endif" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('user.groups') }}">Groups <span class="badge badge-secondary">New</span></a>
+                                    <a class="nav-link @if($sub_menu == 'Groups') active @endif" href="{{ url('user.groups') }}">Groups</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('users') }}">Users</a>
+                                    <a class="nav-link @if($sub_menu == 'Users') active @endif" href="{{ url('users') }}">Users</a>
                                 </li>
                             </ul>
                         </div>
-                    </li>   
-                           <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#Products" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Products</a>
-                        <div id="Products" class="collapse submenu" style="">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if($main_menu == 'Products') active @endif" href="#" data-toggle="collapse" aria-expanded="false" data-target="#Products" aria-controls="submenu-2"><i class="fa fa-fw fa-bars"></i>Products</a>
+                        <div id="Products" class="collapse submenu @if($main_menu == 'Products') show @endif" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('category.index') }}">Category <span class="badge badge-secondary"></span></a>
+                                    <a class="nav-link @if($sub_menu == 'Category') active @endif" href="{{ route('category.index') }}">Category <span class="badge badge-secondary"></span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('product.index') }}">Product</a>
+                                    <a class="nav-link @if($sub_menu == 'Product') active @endif" href="{{ route('product.index') }}">Product</a>
                                 </li>
                             </ul>
                         </div>

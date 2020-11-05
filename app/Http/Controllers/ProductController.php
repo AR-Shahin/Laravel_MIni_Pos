@@ -7,6 +7,11 @@ use App\Product;
 use App\Category;
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Products';
+        $this->data['sub_menu'] = 'Product';
+    }
     /**
      * Display a listing of the resource.
      *
