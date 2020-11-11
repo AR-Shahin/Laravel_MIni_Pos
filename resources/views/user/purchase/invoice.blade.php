@@ -104,7 +104,7 @@
                                 <select name="product_id" id="grp" class="form-control  @error('product_id') is-invalid @enderror" value="">
                                     <option value="">Select Product</option>
                                     @foreach($products as $product)
-                                        <option value="{{ $product->id }}" >{{ ucwords($product->title) }}--[{{$product->price}}]</option>
+                                        <option value="{{ $product->id }}" >{{ ucwords($product->title) }}--[{{$product->cost_price}}]</option>
                                     @endforeach
                                 </select>
                             </div>

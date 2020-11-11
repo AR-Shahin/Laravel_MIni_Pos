@@ -16,9 +16,9 @@ class UserSalesController extends Controller
     public function  __construct()
     {
         parent::__construct();
-       // $this->data['main_menu'] = 'Users';
+        // $this->data['main_menu'] = 'Users';
         $this->data['sub_menu'] = 'Users';
-       // $this->data['tab_menu'] = 'purchases';
+        // $this->data['tab_menu'] = 'purchases';
     }
     public function index( $id )
     {
@@ -52,10 +52,12 @@ class UserSalesController extends Controller
 
     public function addItem(InvoiceProductRequest $request, $user_id, $invoice_id)
     {
-
         $formData = $request->all();
+        $getProductCostPrice = Product::find($request->product_id);
+        $productCostPrice = $getProductCostPrice->cost_price;
+        $profit = ($request->price -$productCostPrice) * $request->quantity;
         $formData['sale_invoice_id'] = $invoice_id;
-
+        $formData['profit'] = $profit;
         if( SaleItem::create($formData) ) {
             $this->setSuccessMessage('Product Added Successfully!');
         }

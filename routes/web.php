@@ -65,6 +65,7 @@ Route::get('reports/sales','Reports\SalesReportController@index')->name('reports
 Route::get('reports/purchases','Reports\PurchaseReportController@index')->name('reports.purchases');
 Route::get('reports/payments','Reports\PaymentReportController@index')->name('reports.payments');
 Route::get('reports/receipts','Reports\ReceiptReportController@index')->name('reports.receipts');
+Route::get('reports/profits','Reports\ProfitReportController@index')->name('reports.profits');
 });
 
 

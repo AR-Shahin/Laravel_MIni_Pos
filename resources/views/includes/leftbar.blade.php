@@ -58,6 +58,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link @if($sub_menu == 'Receipts') active @endif" href="{{ route('reports.receipts') }}">Receipts</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @if($sub_menu == 'Profits') active @endif" href="{{ route('reports.profits') }}">Profits</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
