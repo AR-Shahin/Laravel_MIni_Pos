@@ -58,6 +58,13 @@ Route::delete('users/{id}/receipts/{receipt_id}', 	'UserReceiptController@destro
 Route::resource('category', 'CategoryController',['except' => ['show','edit','create']] );
 //Product Routes
 Route::resource('product', 'ProductController',['except' => ['show','edit','create']] );
+//Stock Route
+Route::get('stock','ProductStockController@index')->name('stock');
+//Report Routes
+Route::get('reports/sales','Reports\SalesReportController@index')->name('reports.sales');
+Route::get('reports/purchases','Reports\PurchaseReportController@index')->name('reports.purchases');
+Route::get('reports/payments','Reports\PaymentReportController@index')->name('reports.payments');
+Route::get('reports/receipts','Reports\ReceiptReportController@index')->name('reports.receipts');
 });
 
 

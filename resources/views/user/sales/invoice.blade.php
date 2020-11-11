@@ -117,7 +117,7 @@
                                 <label for="price">Price" <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" id = "price" value="{{ old('price')}}" placeholder="Price">
+                                <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" id = "price" value="{{ old('price')}}" placeholder="Price" onkeyup="getTotal()">
                             </div>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                                 <label for="price">Quantity" <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" id = "quantity" value="{{ old('quantity')}}" placeholder="Quantity">
+                                <input type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" id = "quantity" value="{{ old('quantity')}}" placeholder="Quantity" onkeyup="getTotal()">
                             </div>
                         </div>
                     </div>
@@ -204,3 +204,13 @@
         </div>
     </form>
 </div>
+<script type="text/javascript">
+    function getTotal() {
+        var price = $('#price').val();
+        var quantity = $('#quantity').val();
+        if(price && quantity){
+            var total = price*quantity;
+            $('#total').val(total);
+        }
+    }
+</script>

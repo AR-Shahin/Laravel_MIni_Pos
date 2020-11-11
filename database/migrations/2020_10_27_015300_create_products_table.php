@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->foreignId('cat_id');
             $table->string('title')->unique();
             $table->string('description');
-            $table->string('unit');
-            $table->double('cost_price',10,2);
-            $table->double('price',10,2);
+            $table->string('unit')->nullable();
+            $table->double('cost_price',10,2)->nullable();
+            $table->double('price',10,2)->nullable();
             $table->timestamps();
         });
     }

@@ -31,9 +31,6 @@ class ProductController extends Controller
             'title' => ['required','unique:products'],
             'cat_id' => ['required'],
             'description' => ['required'],
-            'unit' => ['required'],
-            'cost_price' => ['required'],
-            'price' => ['required'],
         ]);
         $pdct = new Product();
         $pdct->title = ucwords($request->title);
@@ -42,6 +39,7 @@ class ProductController extends Controller
         $pdct->unit = strtoupper($request->unit);
         $pdct->cost_price = $request->cost_price;
         $pdct->price = $request->price;
+        $pdct->status = $request->status;
         if($pdct->save()){
             $this->setSuccessMessage('Product Added Successfully!');
             return redirect()->back();
@@ -53,9 +51,6 @@ class ProductController extends Controller
             'title' => ['required'],
             'cat_id' => ['required'],
             'description' => ['required'],
-            'unit' => ['required'],
-            'cost_price' => ['required'],
-            'price' => ['required'],
         ]);
         $pdct = Product::findorFail($id);
         $pdct->title = ucwords($request->title);
@@ -64,6 +59,7 @@ class ProductController extends Controller
         $pdct->unit = strtoupper($request->unit);
         $pdct->cost_price = $request->cost_price;
         $pdct->price = $request->price;
+        $pdct->status = $request->status;
         if($pdct->save()){
             $this->setSuccessMessage('Product Updated Successfully!');
             return redirect()->back();

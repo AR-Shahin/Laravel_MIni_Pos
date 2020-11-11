@@ -21,7 +21,7 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Product Name</th>
-                                <th>Categroy</th>
+                                <th>Category</th>
                                 <th>Cost Price</th>
                                 <th>Sell Price</th>
                                 <th>Unit</th>
@@ -37,8 +37,9 @@
                                     <td>{{ $i++}}</td>
                                     <td>{{ $product->title}}</td>
                                     <td>{{ $product->category->title }}</td>
-                                    <td>${{ $product->cost_price}}</td>
-                                    <td>${{ $product->price}}</td>
+                                    <td>{{ ($product->cost_price == Null) ? 'NULL' : "$".$product->cost_price }}</td>
+                                    <td>{{ ($product->price == Null) ? 'NULL' : "$".$product->price }}</td>
+
                                     <td>{{ $product->unit}}</td>
                                     <td class="text-center">
                                         <a  data-toggle="modal" data-target="#viewModal_{{ $product->id }}" class="btn btn-secondary text-light btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -124,6 +125,19 @@
                             </div>
                             <div class="col-8">
                                 <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" id = "price" placeholder="Price" value="{{ old('price')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="price">Status</label>
+                            </div>
+                            <div class="col-8">
+                                <select name="status" id="status" class="form-control" value="">
+                                    <option value="1">Physical</option>
+                                    <option value="0">Virtual</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -225,6 +239,19 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-4">
+                                    <label for="price">Status</label>
+                                </div>
+                                <div class="col-8">
+                                    <select name="status" id="status" class="form-control" value="">
+                                        <option value="1" {{($product->status ==1) ? 'selected' : '' }} >Physical</option>
+                                        <option value="0" {{($product->status ==0) ? 'selected' : '' }}>Virtual</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-4">
                                     <label for="price">Desription <span class="text-danger">*</span></label>
                                 </div>
                                 <div class="col-8">
@@ -255,8 +282,8 @@
     <div id="viewModal_{{$product->id}}" class="modal fade">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content bd-0 tx-14">
-                <div class="modal-header pd-x-20">
-                    <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">View Product</h6>
+                <div class="modal-header pb-0">
+                    <h2 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">View Product</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -264,29 +291,29 @@
                 <div class="modal-body pd-20">
                     <div class="row">
                         <div class="col-12">
-                            <h3>{{ $product->title}}.</h3>
+                            <h3>{{ $product->title}}</h3>
                             <hr>
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                 <tr>
-                                    <th>Categroy  </th>
+                                    <th>Category  </th>
                                     <td>{{ $product->category->title}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Product Name  </th>
-                                    <td>{{ $product->title}}</td>
-                                </tr>
-                                <tr>
                                     <th>Cost Price  </th>
-                                    <td>${{ $product->cost_price}}</td>
+                                    <td>{{ ($product->cost_price == Null) ? 'NULL' : "$".$product->cost_price }}</td>
                                 </tr>
                                 <tr>
                                     <th>Price  </th>
-                                    <td>${{ $product->price}}</td>
+                                    <td>{{ ($product->price == Null) ? 'NULL' : "$".$product->price }}</td>
                                 </tr>
                                 <tr>
                                     <th>Unit  </th>
                                     <td>{{ $product->unit}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status  </th>
+                                    <td> {{($product->status ==1) ? 'Physical' : 'Virtual' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Added Date  </th>
