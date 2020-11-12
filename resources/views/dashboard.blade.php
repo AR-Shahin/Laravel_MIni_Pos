@@ -77,17 +77,51 @@
                 <div class="card-body">
                     <h5 class="text-muted">Cash In Hand  </h5>
                     <div class="">
-                        <h1 class="mb-0"> $ {{ $totalReceipts - $totalPayments }}</h1>
+                        <h1 class="mb-0"> $ {{ $cashInHand = $totalReceipts - $totalPayments }}</h1>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
             <div class="card border-3 border-top border-top-primary">
                 <div class="card-body">
                     <h5 class="text-muted">Total Profit By Sell </h5>
                     <div class="">
                         <h1 class="mb-0"> $ {{ $totalProfits }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Total Due </h5>
+                    <div class="">
+                        <h1 class="mb-0"> $ {{ $totalDue }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Total Receivable </h5>
+                    <div class="">
+                        <h1 class="mb-0"> $ {{ $totalReceible }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Total Expense </h5>
+                    <div class="">
+                        <h1 class="mb-0"> $ {{ $totalProfits -  $cashInHand }}</h1>
                     </div>
                 </div>
             </div>
