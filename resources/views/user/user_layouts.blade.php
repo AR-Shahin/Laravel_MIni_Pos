@@ -33,7 +33,7 @@
         <div class="col-md-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link @if($tab_menu == 'user_info') active @endif " href="{{ route('users.show', $user->id) }}">User Info</a>
-                <a class="nav-link " href="">Reports</a>
+                <a class="nav-link @if($tab_menu == 'reports') active @endif" href="{{ route('user.reports',$user->id)}}">Reports</a>
                 <a class="nav-link @if($tab_menu == 'sales') active @endif" href="{{ route('user.sales',$user->id)}}">Sales</a>
 
                 <a class="nav-link  @if($tab_menu == 'purchase') active @endif" href="{{ route('user.purchase', $user->id) }}">Purchases</a>

@@ -51,8 +51,8 @@ Route::get('users/{id}/receipt','UserReceiptController@index')->name('user.recei
 Route::post('users/{id}/receipt/{invoice_id?}','UserReceiptController@store')->name('user.receipt.store');
 Route::delete('users/{id}/receipts/{receipt_id}', 	'UserReceiptController@destroy')->name('user.receipts.destroy');
 
-
-
+//user Reports
+    Route::get('users/{id}/reports','UserReportsController@index')->name('user.reports');
 
 //Category Routes
 Route::resource('category', 'CategoryController',['except' => ['show','edit','create']] );
@@ -66,6 +66,7 @@ Route::get('reports/purchases','Reports\PurchaseReportController@index')->name('
 Route::get('reports/payments','Reports\PaymentReportController@index')->name('reports.payments');
 Route::get('reports/receipts','Reports\ReceiptReportController@index')->name('reports.receipts');
 Route::get('reports/profits','Reports\ProfitReportController@index')->name('reports.profits');
+Route::get('reports/days','Reports\DayReportController@index')->name('reports.days');
 });
 
 

@@ -47,6 +47,9 @@
                         <div id="Reports" class="collapse submenu @if($main_menu == 'Reports') show @endif" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
+                                    <a class="nav-link @if($sub_menu == 'Reports') active @endif" href="{{ route('reports.days') }}">Day Reports <span class="badge badge-secondary"></span></a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link @if($sub_menu == 'Sales') active @endif" href="{{ route('reports.sales') }}">Sales <span class="badge badge-secondary"></span></a>
                                 </li>
                                 <li class="nav-item">
