@@ -67,6 +67,13 @@ Route::get('reports/payments','Reports\PaymentReportController@index')->name('re
 Route::get('reports/receipts','Reports\ReceiptReportController@index')->name('reports.receipts');
 Route::get('reports/profits','Reports\ProfitReportController@index')->name('reports.profits');
 Route::get('reports/days','Reports\DayReportController@index')->name('reports.days');
+
+
+//Admins Routes
+    Route::get('admin/profile','Auth\AdminController@index')->name('admin.profile');
+    Route::get('admin/update','Auth\AdminController@update')->name('admin.update');
+    Route::post('admin/update','Auth\AdminController@updateProfile')->name('admin.update');
+    Route::post('admin/change/password','Auth\AdminController@changePassword')->name('admin.change.password');
 });
 
 

@@ -44,6 +44,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if($main_menu == 'Reports') active @endif" href="#" data-toggle="collapse" aria-expanded="false" data-target="#Reports" aria-controls="submenu-2"><i class="fa fa-fw fa-chart-bar"></i>Reports</a>
+
                         <div id="Reports" class="collapse submenu @if($main_menu == 'Reports') show @endif" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -63,6 +64,24 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link @if($sub_menu == 'Profits') active @endif" href="{{ route('reports.profits') }}">Profits</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link @if($main_menu == 'Admins') active @endif" href="#" data-toggle="collapse" aria-expanded="false" data-target="#admins" aria-controls="users"><i class="fa fa-fw fa-users"></i>Admin Panel</a>
+                        <div id="admins" class="collapse submenu @if($main_menu == 'Admins') show @endif" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link @if($sub_menu == 'Profile') active @endif" href="{{ route('admin.profile') }}">My Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @if($sub_menu == 'Update') active @endif" href="{{ route('admin.update') }}">Update Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @if($sub_menu == 'Users') active @endif" href="{{ url('users') }}">Admins</a>
                                 </li>
                             </ul>
                         </div>

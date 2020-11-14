@@ -16,16 +16,23 @@
 </head>
 
 <body>
+@if(session('message'))
+    <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
+        {{ session('message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+@yield('main_section')
 
-    @yield('main_section')
 
-
-    <!-- Optional JavaScript -->
-    <script src="{{ asset('assets') }}/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <script src="{{ asset('assets') }}/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="{{ asset('assets') }}/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <script src="{{ asset('assets') }}/libs/js/main-js.js"></script>
-    @yield('scripts')
+<!-- Optional JavaScript -->
+<script src="{{ asset('assets') }}/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="{{ asset('assets') }}/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="{{ asset('assets') }}/vendor/slimscroll/jquery.slimscroll.js"></script>
+<script src="{{ asset('assets') }}/libs/js/main-js.js"></script>
+@yield('scripts')
 </body>
 
 </html>
