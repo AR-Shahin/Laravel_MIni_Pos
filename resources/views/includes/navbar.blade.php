@@ -11,7 +11,13 @@
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info bg-dark">
                             <h5 class="mb-0 text-white nav-user-name">{{ Auth::user()->name }}</h5>
-                            <span class="status"></span><span class="ml-2">Available</span>
+                            <span class="status"></span><span class="ml-2">
+                                @if(Auth::user()->status == 0)
+                                    Salesman
+                                @elseif(Auth::user()->status == 1)
+                                    Admin
+                                @endif
+                            </span>
                         </div>
                         <a class="dropdown-item " href="{{route('admin.profile')}}"><i class="fas fa-user mr-2"></i>Profile</a>
                         <a class="dropdown-item" href="{{route('admin.update')}}"><i class="fas fa-cog mr-2"></i>Setting</a>

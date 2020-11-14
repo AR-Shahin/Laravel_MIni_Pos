@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Admin;
-class AddAdminInAddminTable extends Migration
+
+class AddDefaultAdmin extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +15,14 @@ class AddAdminInAddminTable extends Migration
     public function up()
     {
         $admin = [
-            'name' => 'Jone Done',
-            'email' => 'ars@ex.com',
+            'name' => 'Default Admin',
+            'email' => 'default@admin.com',
             'password' => bcrypt(123),
             'phone' => 23423459,
-            'address' => 'Nikunju-2',
-            'image' => 'user.jpg',
+            'address' => 'Dhaka,Bangladesh',
+            'image' => 'uploads/admins/default.png',
+            'status' => 1,
+            'added_by' => 'System',
             'email_verified_at' => now()
         ];
         Admin::create($admin);
@@ -32,8 +35,6 @@ class AddAdminInAddminTable extends Migration
      */
     public function down()
     {
-        Schema::table('addmin', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

@@ -16,14 +16,16 @@
 </head>
 
 <body>
-@if(session('message'))
-    <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
-        {{ session('message') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
+<div class="container">
+    @if(session('front_message'))
+        <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
+            {{ session('front_message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+</div>
 @yield('main_section')
 
 

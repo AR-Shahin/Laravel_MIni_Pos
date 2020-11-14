@@ -74,6 +74,19 @@ Route::get('reports/days','Reports\DayReportController@index')->name('reports.da
     Route::get('admin/update','Auth\AdminController@update')->name('admin.update');
     Route::post('admin/update','Auth\AdminController@updateProfile')->name('admin.update');
     Route::post('admin/change/password','Auth\AdminController@changePassword')->name('admin.change.password');
+
+    //add new admin
+    Route::get('admins/view','Auth\AdminController@viewAllAdmin')->name('admins.view');
+    Route::get('admins/create','Auth\AdminController@addNewAdmin')->name('admin.create');
+    Route::post('admin/store','Auth\AdminController@storeNewAdmin')->name('admin.store');
+    Route::put('admin/edit/email/{id}','Auth\AdminController@editEmail')->name('admin.email.edit');
+
+    //admin status
+    Route::get('admin/block/{id}','Auth\AdminController@blockAdmin')->name('admin.block');
+    Route::get('admin/unblock/{id}','Auth\AdminController@unblockAdmin')->name('admin.unblock');
+    Route::get('admin/promote/{id}','Auth\AdminController@promoteAdmin')->name('admin.promote');
+    Route::get('admin/demote/{id}','Auth\AdminController@demoteAdmin')->name('admin.demote');
+    Route::get('admin/delete/{id}','Auth\AdminController@deleteAdmin')->name('admin.delete');
 });
 
 

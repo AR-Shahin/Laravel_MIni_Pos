@@ -6,23 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/vendor/datatables/css/fixedHeader.bootstrap4.css">
 @endsection
-@section('breadcrumb')
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="page-header">
-                <div class="page-breadcrumb">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+
 @section('main_content')
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -42,7 +26,6 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Address</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -58,7 +41,6 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone}}</td>
-                                    <td>{{$user->address}}</td>
                                     <td>
                                         <a href="{{ url('users').'/'.$user->id }}" class="btn btn-secondary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal_{{ $user->id }}"><i class="fa fa-edit text-light"></i></a>

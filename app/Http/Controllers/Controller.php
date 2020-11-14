@@ -30,12 +30,12 @@ class Controller extends BaseController
     }
     public function setSuccessMessageFront($message)
     {
-        session()->flash('message',$message);
+        session()->flash('front_message',$message);
         session()->flash('type','success');
     }
     public function setErrorMessageFront($message)
     {
-        session()->flash('message',$message);
+        session()->flash('front_message',$message);
         session()->flash('type','danger');
     }
 }

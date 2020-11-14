@@ -20,6 +20,22 @@
                             <td>{{ucwords($admin->name)}}</td>
                         </tr>
                         <tr>
+                            <th>Role</th>
+                            <td>
+                                @if($admin->status == 0)
+                                    <span class="badge badge-info">Salesman</span>
+                                @elseif($admin->status == 1)
+                                    <span class="badge badge-success">Admin</span>
+                                @elseif($admin->status == 3)
+                                    <span class="badge badge-danger">Blocked</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Added By</th>
+                            <td>{{$admin->added_by}}</td>
+                        </tr>
+                        <tr>
                             <th>Email</th>
                             <td>{{$admin->email}}</td>
                         </tr>

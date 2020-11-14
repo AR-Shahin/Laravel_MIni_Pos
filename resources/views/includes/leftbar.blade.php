@@ -80,9 +80,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link @if($sub_menu == 'Update') active @endif" href="{{ route('admin.update') }}">Update Profile</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link @if($sub_menu == 'Users') active @endif" href="{{ url('users') }}">Admins</a>
-                                </li>
+                                @if(Auth::user()->status == 1)
+                                    <li class="nav-item">
+                                        <a class="nav-link @if($sub_menu == 'Admins') active @endif" href="{{ route('admins.view') }}">Admins</a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </li>
