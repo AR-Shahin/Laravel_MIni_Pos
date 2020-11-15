@@ -23,7 +23,7 @@ class AddDefaultAdmin extends Migration
             'image' => 'uploads/admins/default.png',
             'status' => 1,
             'added_by' => 'System',
-            'email_verified_at' => now()
+            'created_at' => now()
         ];
         Admin::create($admin);
     }

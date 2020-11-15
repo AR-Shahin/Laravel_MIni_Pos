@@ -146,6 +146,7 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
     public function promoteAdmin($id){
         $update = Admin::findorFail($id)->update([
             'status' => 1
