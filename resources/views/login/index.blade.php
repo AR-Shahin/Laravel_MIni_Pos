@@ -12,7 +12,7 @@
 		        </ul>
 		    </div>
 		@endif
-            <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="{{ asset('assets')}}/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
+            <div class="card-header text-center"><a href=""><img class="logo-img" src="{{ asset('/uploads/logo.png')}}" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
                 <form action="{{ url('login')}}" method="post">
                 @csrf
