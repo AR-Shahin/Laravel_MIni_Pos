@@ -35,7 +35,6 @@ class AdminController extends Controller
         return view('admin.update',$this->data);
     }
     public function updateProfile(Request $request){
-
         $image = $request->file('image');
         if ($image) {
             $old_image = $request->old_image;

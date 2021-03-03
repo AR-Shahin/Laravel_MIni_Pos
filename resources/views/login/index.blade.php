@@ -30,6 +30,14 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
                 </form>
+                <hr>
+                <!-- Default Credentials -->
+                <h6 class="m-0">Default Credentials</h6>
+                <ul>
+                    <li><b>Email : </b><span>default@admin.com</span></li>
+                    <li><b>Password : </b><span>123</span></li>
+                </ul>
+
             </div>
         </div>
     </div>
